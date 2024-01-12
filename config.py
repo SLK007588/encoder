@@ -17,7 +17,7 @@ class Config(object):
 
 	TIMEOUT = int(os.environ.get("TIMEOUT", 30))
 
-	URL = "https://paisakamalo.in/api?api=e31f8bd857b3a79bdb34932bce5c38a1d1bde29c&url="
+	URL = "https://atglinks.com/api?api=c82cdbe94a1fcaf9918a040c83bbc168effb58a8&url="
 
 # Config.AUTH_USERS = [6953453057,-1002038244305]
 # Config.API_ID = 3281305
