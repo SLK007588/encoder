@@ -10,3 +10,4 @@ ffmpeg
 speedtest-cli
 pymongo
 pymongo[srv]
+requests
