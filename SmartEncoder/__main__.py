@@ -73,7 +73,6 @@ if __name__ == "__main__":
 	@TGBot.on_message(filters.incoming & filters.private & filters.command(['start']))
 	async def strrr(bot: Client, msg: Message):
 		try:
-			print("Here")
 
 			if msg.command[-1] != "start":
 				ms = await msg.reply(f"Proccessing... {msg.command[-1]}")
@@ -96,33 +95,17 @@ if __name__ == "__main__":
 	async def token(bot: Client, msg: Message):
 		await msg.reply(f"Your token is {myDb.g(msg.from_user.id)}")
 
-	@TGBot.on_message(filters.incoming & (filters.video | filters.document))
+	@TGBot.on_message(filters.incoming & not filters.private & (filters.video | filters.document))
 	@access
 	async def wah_1_man(bot, message: Message):
-		print('Yo')
-		# if mode_for_custom[0] == "off":
-		# 	if message.chat.id not in Config.AUTH_USERS:
-		# 		return
-		# 	if rename_task[0] == "off":
+		
 		query = await message.reply_text("Aᴅᴅᴇᴅ ᴛʜɪs ғɪʟᴇ ɪɴ ǫᴜᴇᴜᴇ.\nCᴏᴍᴘʀᴇss ᴡɪʟʟ sᴛᴀʀᴛ sᴏᴏɴ.", quote=True)
 		a = message
 		data.append(a)
-		print('Ran')
-		# using a as message is easy
-		#pickled = codecs.encode(pickle.dumps(a), "base64").decode()
-		#myDB.rpush("DBQueue", pickled)
-		#if myDB.llen("DBQueue") == 1:
+		
 		if len(data) == 1:
 			await query.delete()
 			await add_task(bot, message)
-			# else:
-			# 	if message.from_user.id not in Config.AUTH_USERS:
-			# 		return
-			# 	query = await message.reply_text("**Added this file to rename in queue.**", quote=True)
-			# 	rename_queue.append(message)
-			# 	if len(rename_queue) == 1:
-			# 		await query.delete()
-			# 		await add_rename(bot, message)
 
 	@TGBot.on_message(filters.incoming & filters.command("rename_mode", prefixes=["/", "."]))
 	async def help_eval_message(bot, message):
