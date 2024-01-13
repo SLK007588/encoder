@@ -95,7 +95,7 @@ if __name__ == "__main__":
 	async def token(bot: Client, msg: Message):
 		await msg.reply(f"Your token is {myDb.g(msg.from_user.id)}")
 
-	@TGBot.on_message(filters.incoming & not filters.private & (filters.video | filters.document))
+	@TGBot.on_message((filters.incoming & ~filters.private) & (filters.video | filters.document))
 	@access
 	async def wah_1_man(bot, message: Message):
 		
